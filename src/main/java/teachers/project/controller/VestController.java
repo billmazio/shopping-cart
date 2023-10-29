@@ -1,5 +1,6 @@
 package teachers.project.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,7 @@ import java.util.stream.IntStream;
 public class VestController {
 
     private final StudentService studentService;
-
+    @Autowired
     public VestController(StudentService studentService) {
         this.studentService = studentService;
     }

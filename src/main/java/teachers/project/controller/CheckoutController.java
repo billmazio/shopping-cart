@@ -1,5 +1,6 @@
 package teachers.project.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,7 +24,7 @@ public class CheckoutController {
     private final StudentService studentService;
     private final EmailService emailService;
     private final SeminarCartService seminarCartService;
-
+    @Autowired
     public CheckoutController(StudentService studentService, EmailService emailService, SeminarCartService seminarCartService) {
         this.studentService = studentService;
         this.emailService = emailService;

@@ -1,5 +1,6 @@
 package teachers.project.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,18 +15,21 @@ import teachers.project.service.SeminarService;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/cart")
 public class SeminarCartController {
     private final SeminarService seminarService;
     private final SeminarCartService seminarCartService;
-
+    @Autowired
     public SeminarCartController(SeminarService seminarService, SeminarCartService seminarCartService) {
         this.seminarService = seminarService;
         this.seminarCartService = seminarCartService;
     }
-    //showing cart model
+
+
+   // showing cart model
     @GetMapping(value = {"", "/"})
     public String seminarCart(Model model) {
         model.addAttribute("cart", seminarCartService.getCart());

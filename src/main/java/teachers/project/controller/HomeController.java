@@ -1,6 +1,7 @@
 package teachers.project.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ public class HomeController {
 
     private final SeminarService seminarService;
 
-
+    @Autowired
     public HomeController(SeminarService seminarService) {
         this.seminarService = seminarService;
     }
