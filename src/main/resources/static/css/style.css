@@ -1,0 +1,37 @@
+body {
+    background-color: #455d7a;
+    color: #f7c873;
+}
+
+#main-content {
+    min-height: 500px;
+    margin-top: 50px;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.table th, td {
+    text-align: center;
+
+}
+.table th{
+    background-color:#a64452;
+}
+
+.field-error {
+    border-color: #FF0000;
+    margin-bottom: 10px;
+}
+
+.fa-bigger {
+    font-size: 1.5em;
+}
+
+.form-control {
+    color: blue;
+}
+.card-title {
+    text-shadow: 2px 2px 2px blue;
+}
