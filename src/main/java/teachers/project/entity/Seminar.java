@@ -53,4 +53,10 @@ public class Seminar {
 
     @OneToMany(mappedBy = "seminar", cascade = CascadeType.ALL)
     private List<Vest> vests;
+
+    public Seminar(long l, String math, String learnMath) {
+    }
+
+    public Seminar(long l, String math, BigDecimal bigDecimal, String johnDoe, String number, String s, LocalDate now) {
+    }
 }

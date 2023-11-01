@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class StudentServiceImpl implements IStudentService {
@@ -54,7 +55,8 @@ public class StudentServiceImpl implements IStudentService {
 
     @Override
     public List<StudentSeminar> findVestsByStudentId(Long id) {
-        List<Vest> vests = (List<Vest>) vestRepository.findAll();
+       List<Vest> vests = (List<Vest>) vestRepository.findAll();
+
 
         Map<Student, List<Seminar>> studentSeminarMap = vests.stream()
                 .collect(Collectors.groupingBy(Vest::getStudent, Collectors.mapping(Vest::getSeminar, Collectors.toList())));
@@ -73,12 +75,19 @@ public class StudentServiceImpl implements IStudentService {
         int currentPage = pageable.getPageNumber();
         int startItem = currentPage * pageSize;
 
-        ArrayList<Vest> vests;
+//        ArrayList<Vest> vests;
+//        if (term == null) {
+//            vests = (ArrayList<Vest>) vestRepository.findAll();
+//        } else {
+//            LocalDate date = LocalDate.parse(term);
+//            vests = (ArrayList<Vest>) vestRepository.findByVestDate(date);
+//        }
+        List<Vest> vests;
         if (term == null) {
-            vests = (ArrayList<Vest>) vestRepository.findAll();
+            vests = (List<Vest>) vestRepository.findAll();
         } else {
             LocalDate date = LocalDate.parse(term);
-            vests = (ArrayList<Vest>) vestRepository.findByVestDate(date);
+            vests = new ArrayList<>(vestRepository.findByVestDate(date));
         }
 
         Map<Student, List<Seminar>> studentSeminarMap = vests.stream()

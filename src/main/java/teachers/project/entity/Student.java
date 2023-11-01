@@ -59,4 +59,6 @@ public class Student {
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
     private List<Vest> vests;
 
+    public Student(long l, String john, String doe, String newYork, String number, String number1, String mail) {
+    }
 }

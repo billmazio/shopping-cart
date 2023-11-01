@@ -14,4 +14,8 @@ public interface VestRepository extends CrudRepository<Vest, Long> {
     ArrayList<Vest> findByVestDate(LocalDate term);
 
     ArrayList<Vest> findVestsById(Long id);
+
+    @Query("SELECT v FROM Vest v WHERE v.student.id = :studentId")
+    ArrayList<Vest> findVestsByStudentId(Long studentId);
+
 }

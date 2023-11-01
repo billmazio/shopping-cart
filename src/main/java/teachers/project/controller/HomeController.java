@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
 @Controller
 public class HomeController {
 
-    //maximum number of seminars in every page
+    //maximum number in every page
     private static final int pageSizeDefault = 6;
 
     private final SeminarService seminarService;
