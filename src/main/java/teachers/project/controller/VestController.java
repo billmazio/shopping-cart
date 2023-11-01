@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import teachers.project.entity.Seminar;
 import teachers.project.entity.Student;
 import teachers.project.entity.StudentSeminar;
-import teachers.project.service.StudentService;
+import teachers.project.service.IStudentService;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -26,9 +27,9 @@ import java.util.stream.IntStream;
 @RequestMapping("/vests")
 public class VestController {
 
-    private final StudentService studentService;
+    private final IStudentService studentService;
     @Autowired
-    public VestController(StudentService studentService) {
+    public VestController(IStudentService studentService) {
         this.studentService = studentService;
     }
 

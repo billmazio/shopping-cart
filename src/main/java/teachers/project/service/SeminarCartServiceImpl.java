@@ -1,18 +1,20 @@
 package teachers.project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import teachers.project.entity.Seminar;
+
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class SeminarCartService {
+public class SeminarCartServiceImpl implements ISeminarCartService {
 
-    private HttpSession session;
-
-    public SeminarCartService( HttpSession session) {
+    private final HttpSession session;
+   @Autowired
+    public SeminarCartServiceImpl( HttpSession session) {
         this.session = session;
     }
 
@@ -20,7 +22,7 @@ public class SeminarCartService {
         return session;
     }
 
-    //creation seminar-cartMarket
+    @Override
     public List<Seminar> getCart() {
         List<Seminar> cart = (List<Seminar>) session.getAttribute("cart");
         if (cart == null) {
@@ -28,31 +30,26 @@ public class SeminarCartService {
         }
         return cart;
     }
-    //creation of price
-     public BigDecimal totalPrice() {
+
+    @Override
+    public BigDecimal totalPrice() {
         BigDecimal totalPrice = new BigDecimal(0);
         List<Seminar> cart = getCart();
         for (Seminar s : cart) {
             totalPrice = totalPrice.add(s.getPrice());
         }
         return  totalPrice;
-     }
+    }
 
-    //removed automatically after adding
+    @Override
     public void emptyCart() {
         List<Seminar> cart = getCart();
-        cart.removeAll(cart);
+        cart.clear();
     }
-    //remove from cart
+
+    @Override
     public void deleteSeminarWithId(Long seminarId) {
         List<Seminar> cart = getCart();
-        for (int i = 0; i <= cart.size(); i++) {
-            if (cart.get(i).getId() == seminarId) {
-                cart.remove(cart.get(i));
-            }
-        }
-
-
+        cart.removeIf(seminar -> seminar.getId().equals(seminarId));
     }
-
 }

@@ -11,8 +11,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import teachers.project.entity.Seminar;
 import teachers.project.entity.Student;
 import teachers.project.service.EmailService;
-import teachers.project.service.SeminarCartService;
-import teachers.project.service.StudentService;
+import teachers.project.service.ISeminarCartService;
+import teachers.project.service.IStudentService;
+
 
 import javax.validation.Valid;
 import java.util.List;
@@ -21,11 +22,11 @@ import java.util.List;
 @RequestMapping("/checkout")
 public class CheckoutController {
 
-    private final StudentService studentService;
+    private final IStudentService studentService;
     private final EmailService emailService;
-    private final SeminarCartService seminarCartService;
+    private final ISeminarCartService seminarCartService;
     @Autowired
-    public CheckoutController(StudentService studentService, EmailService emailService, SeminarCartService seminarCartService) {
+    public CheckoutController(IStudentService studentService, EmailService emailService, ISeminarCartService seminarCartService) {
         this.studentService = studentService;
         this.emailService = emailService;
         this.seminarCartService = seminarCartService;

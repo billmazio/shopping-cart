@@ -3,29 +3,31 @@ package teachers.project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import teachers.project.entity.Seminar;
-import teachers.project.service.SeminarCartService;
+import teachers.project.service.ISeminarCartService;
+
 import teachers.project.service.SeminarService;
 
 
+
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/cart")
 public class SeminarCartController {
     private final SeminarService seminarService;
-    private final SeminarCartService seminarCartService;
+    private final ISeminarCartService seminarCartService;
+
+
     @Autowired
-    public SeminarCartController(SeminarService seminarService, SeminarCartService seminarCartService) {
+    public SeminarCartController(SeminarService seminarService, ISeminarCartService seminarCartService) {
         this.seminarService = seminarService;
         this.seminarCartService = seminarCartService;
+
     }
 
 

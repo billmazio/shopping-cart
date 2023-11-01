@@ -16,7 +16,7 @@ import java.util.Optional;
 
 
 @Service
-public class SeminarService {
+public class SeminarService implements ISeminarService{
 
     private final SeminarRepository seminarRepository;
 
@@ -55,16 +55,17 @@ public class SeminarService {
        return seminarPage;
 
     }
-
+    @Override
     public void save(Seminar seminar) {
         seminarRepository.save(seminar);
     }
 
+    @Override
     public Optional<Seminar> findSeminarById(Long id) {
         Optional<Seminar> seminar = seminarRepository.findById(id);
         return seminar;
     }
-
+    @Override
     public void delete(Long id) {
         seminarRepository.deleteById(id);
     }
