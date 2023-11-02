@@ -27,4 +27,6 @@ public class Vest {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "seminar_id")
     private Seminar seminar;
+
+
 }
