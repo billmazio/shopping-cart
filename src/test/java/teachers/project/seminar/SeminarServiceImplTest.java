@@ -13,7 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import teachers.project.entity.Seminar;
 import teachers.project.repository.SeminarRepository;
-import teachers.project.service.SeminarService;
+import teachers.project.service.SeminarServiceImpl;
 
 
 import java.math.BigDecimal;
@@ -30,7 +30,7 @@ public class SeminarServiceImplTest {
     private SeminarRepository seminarRepository;
 
     @InjectMocks
-    private SeminarService seminarService;
+    private SeminarServiceImpl seminarService;
 
     @Test
     public void testCreateSeminar() {

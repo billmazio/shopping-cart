@@ -55,9 +55,14 @@ public class Seminar {
     @OneToMany(mappedBy = "seminar", cascade = CascadeType.ALL)
     private List<Vest> vests;
 
-    public Seminar(long l, String math, String learnMath) {
-    }
 
-    public Seminar(long l, String math, BigDecimal bigDecimal, String johnDoe, String number, String s, LocalDate now) {
+    public Seminar(Long id, String name, BigDecimal price, String teachers, String code, String scientificManager, LocalDate publishedOn) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.teachers = teachers;
+        this.code = code;
+        this.scientificManager = scientificManager;
+        this.publishedOn = publishedOn;
     }
 }

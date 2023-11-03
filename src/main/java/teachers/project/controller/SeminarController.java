@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import teachers.project.entity.Seminar;
-import teachers.project.service.SeminarService;
+import teachers.project.service.SeminarServiceImpl;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -22,10 +22,10 @@ import java.util.stream.IntStream;
 @RequestMapping("/seminar")
 public class SeminarController {
 
-    private final SeminarService seminarService;
+    private final SeminarServiceImpl seminarServiceImpl;
     @Autowired
-    public SeminarController(SeminarService seminarService) {
-        this.seminarService = seminarService;
+    public SeminarController(SeminarServiceImpl seminarServiceImpl) {
+        this.seminarServiceImpl = seminarServiceImpl;
     }
 
     //showing all seminars
@@ -53,9 +53,9 @@ public class SeminarController {
         Page<Seminar> seminarPage;
 
         if (term == null) {
-            seminarPage = seminarService.findPaginated(PageRequest.of(currentPage - 1, pageSize), null);
+            seminarPage = seminarServiceImpl.findPaginated(PageRequest.of(currentPage - 1, pageSize), null);
         } else {
-            seminarPage = seminarService.findPaginated(PageRequest.of(currentPage - 1, pageSize), term);
+            seminarPage = seminarServiceImpl.findPaginated(PageRequest.of(currentPage - 1, pageSize), term);
         }
         model.addAttribute("seminarPage", seminarPage);
 
@@ -79,7 +79,7 @@ public class SeminarController {
         if (result.hasErrors()) {
             return "form";
         }
-        seminarService.save(seminar);
+        seminarServiceImpl.save(seminar);
         redirect.addFlashAttribute("successMessage", "Saved seminar successfully!");
         return "redirect:/seminar";
     }
@@ -87,14 +87,14 @@ public class SeminarController {
     //edit
     @GetMapping("/edit/{id}")
     public String editSeminar(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("seminar", seminarService.findSeminarById(id));
+        model.addAttribute("seminar", seminarServiceImpl.findSeminarById(id));
         return "form";
     }
 
     //delete seminar
     @GetMapping("/delete/{id}")
     public String deleteSeminar(@PathVariable Long id, RedirectAttributes redirect) {
-        seminarService.delete(id);
+        seminarServiceImpl.delete(id);
         redirect.addFlashAttribute("successMessage", "Deleted seminar successfully!");
         return "redirect:/seminar";
     }

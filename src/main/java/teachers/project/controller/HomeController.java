@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import teachers.project.entity.Seminar;
-import teachers.project.service.SeminarService;
+import teachers.project.service.SeminarServiceImpl;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -21,11 +21,11 @@ public class HomeController {
     //maximum number in every page
     private static final int pageSizeDefault = 6;
 
-    private final SeminarService seminarService;
+    private final SeminarServiceImpl seminarServiceImpl;
 
     @Autowired
-    public HomeController(SeminarService seminarService) {
-        this.seminarService = seminarService;
+    public HomeController(SeminarServiceImpl seminarServiceImpl) {
+        this.seminarServiceImpl = seminarServiceImpl;
     }
 
 
@@ -54,10 +54,10 @@ public class HomeController {
       Page<Seminar> seminarPage;
 
         if (term == null) {
-            seminarPage = seminarService.findPaginated(PageRequest.of(currentPage -1,pageSize),null);
+            seminarPage = seminarServiceImpl.findPaginated(PageRequest.of(currentPage -1,pageSize),null);
 
         }else {
-            seminarPage = seminarService.findPaginated(PageRequest.of(currentPage -1,pageSize),term);
+            seminarPage = seminarServiceImpl.findPaginated(PageRequest.of(currentPage -1,pageSize),term);
         }
         model.addAttribute("seminarPage",seminarPage);
 

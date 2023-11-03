@@ -16,11 +16,11 @@ import java.util.Optional;
 
 
 @Service
-public class SeminarService implements ISeminarService{
+public class SeminarServiceImpl implements ISeminarService{
 
     private final SeminarRepository seminarRepository;
 
-    public SeminarService(SeminarRepository seminarRepository) {
+    public SeminarServiceImpl(SeminarRepository seminarRepository) {
         this.seminarRepository = seminarRepository;
     }
 

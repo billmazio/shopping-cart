@@ -59,6 +59,13 @@ public class Student {
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
     private List<Vest> vests;
 
-    public Student(long l, String john, String doe, String newYork, String number, String number1, String mail) {
+    public Student(Long id, String name, String surname, String city, String postalCode, String phoneNumber, String email) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
     }
 }

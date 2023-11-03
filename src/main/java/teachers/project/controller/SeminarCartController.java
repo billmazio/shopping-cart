@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import teachers.project.entity.Seminar;
 import teachers.project.service.ISeminarCartService;
 
-import teachers.project.service.SeminarService;
+import teachers.project.service.SeminarServiceImpl;
 
 
 
@@ -19,13 +19,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/cart")
 public class SeminarCartController {
-    private final SeminarService seminarService;
+    private final SeminarServiceImpl seminarServiceImpl;
     private final ISeminarCartService seminarCartService;
 
 
     @Autowired
-    public SeminarCartController(SeminarService seminarService, ISeminarCartService seminarCartService) {
-        this.seminarService = seminarService;
+    public SeminarCartController(SeminarServiceImpl seminarServiceImpl, ISeminarCartService seminarCartService) {
+        this.seminarServiceImpl = seminarServiceImpl;
         this.seminarCartService = seminarCartService;
 
     }
@@ -41,7 +41,7 @@ public class SeminarCartController {
     @GetMapping("/add/{id}")
     public String addToCart(@PathVariable("id") Long id, RedirectAttributes redirect) {
         List<Seminar> cart = seminarCartService.getCart();
-        Seminar seminar = seminarService.findSeminarById(id).get();
+        Seminar seminar = seminarServiceImpl.findSeminarById(id).get();
         if (seminar != null) {
             cart.add(seminar);
         }
@@ -53,7 +53,7 @@ public class SeminarCartController {
     //removing the cart
     @GetMapping("/remove/{id}")
     public String removeFromCart(@PathVariable("id") Long id, RedirectAttributes redirect) {
-        Seminar seminar = seminarService.findSeminarById(id).get();
+        Seminar seminar = seminarServiceImpl.findSeminarById(id).get();
         if (seminar != null) {
             seminarCartService.deleteSeminarWithId(id);
         }
