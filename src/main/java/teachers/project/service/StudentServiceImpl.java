@@ -34,11 +34,13 @@ public class StudentServiceImpl implements IStudentService {
         this.billingRepository = billingRepository;
     }
 
+    // Method to find paginated StudentSeminar records.
     @Override
     public Page<StudentSeminar> findPaginated(Pageable pageable, String term) {
         return page(pageable, term);
     }
 
+    // Method to create Vest records for a student and seminars.
     @Override
     @Transactional
     public void createVest(Student student, List<Seminar> seminars) {
@@ -53,35 +55,32 @@ public class StudentServiceImpl implements IStudentService {
         }
     }
 
+    // Method to find Vest records for a specific student.
     @Override
     public List<StudentSeminar> findVestsByStudentId(Long id) {
        List<Vest> vests = (List<Vest>) vestRepository.findAll();
 
-
+        // Grouping Vest records by Student and mapping them to Seminars.
         Map<Student, List<Seminar>> studentSeminarMap = vests.stream()
                 .collect(Collectors.groupingBy(Vest::getStudent, Collectors.mapping(Vest::getSeminar, Collectors.toList())));
 
+        // Creating StudentSeminar objects from grouped data.
         List<StudentSeminar> studentSeminars = studentSeminarMap.entrySet().stream()
                 .map(entry -> new StudentSeminar(entry.getKey(), entry.getValue()))
                 .collect(Collectors.toList());
 
+        // Filtering StudentSeminar records for the specified student.
         return studentSeminars.stream()
                 .filter(studentSeminar -> studentSeminar.getStudent().getId().equals(id))
                 .collect(Collectors.toList());
     }
 
+    // Helper method for paginating StudentSeminar records.
     private Page<StudentSeminar> page(Pageable pageable, String term) {
         int pageSize = pageable.getPageSize();
         int currentPage = pageable.getPageNumber();
         int startItem = currentPage * pageSize;
 
-//        ArrayList<Vest> vests;
-//        if (term == null) {
-//            vests = (ArrayList<Vest>) vestRepository.findAll();
-//        } else {
-//            LocalDate date = LocalDate.parse(term);
-//            vests = (ArrayList<Vest>) vestRepository.findByVestDate(date);
-//        }
         List<Vest> vests;
         if (term == null) {
             vests = (List<Vest>) vestRepository.findAll();
@@ -90,9 +89,11 @@ public class StudentServiceImpl implements IStudentService {
             vests = new ArrayList<>(vestRepository.findByVestDate(date));
         }
 
+        // Grouping Vest records by Student and mapping them to Seminars.
         Map<Student, List<Seminar>> studentSeminarMap = vests.stream()
                 .collect(Collectors.groupingBy(Vest::getStudent, Collectors.mapping(Vest::getSeminar, Collectors.toList())));
 
+        // Creating StudentSeminar objects from grouped data.
         List<StudentSeminar> studentSeminarList = studentSeminarMap.entrySet().stream()
                 .map(entry -> new StudentSeminar(entry.getKey(), entry.getValue()))
                 .collect(Collectors.toList());

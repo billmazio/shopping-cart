@@ -31,7 +31,7 @@ public class CheckoutController {
         this.emailService = emailService;
         this.seminarCartService = seminarCartService;
     }
-    //filling in details
+    // Display checkout page with student details and cart items.
     @GetMapping(value = {"","/"})
     public String checkout(Model model) {
         List<Seminar> cart = seminarCartService.getCart();
@@ -43,17 +43,18 @@ public class CheckoutController {
         model.addAttribute("totalPrice",seminarCartService.totalPrice().toString());
         return "checkout";
     }
-    //store the vest
+    // Process the vest placement and send confirmation email.
     @PostMapping("/placeVest")
     public String placeVest(@Valid Student student, BindingResult result, RedirectAttributes redirect) {
         if (result.hasErrors()) {
             return "/checkout";
         }
-        //showing completing vest
+        // Create a vest for the student and send a confirmation email.
         studentService.createVest(student,seminarCartService.getCart());
         emailService.sendEmail(student.getEmail(),"roomSeminar -Vest Confirmation","Your vest has been confirmed");
-        //method void emptyCart
+        // Empty the cart after placing the vest.
         seminarCartService.emptyCart();
+        // Add a success message and redirect to the cart page.
         redirect.addFlashAttribute("successMessage", "The vest is confirmed, check your email.");
         return "redirect:/cart";
     }

@@ -13,15 +13,17 @@ import java.util.List;
 public class SeminarCartServiceImpl implements ISeminarCartService {
 
     private final HttpSession session;
-   @Autowired
+    @Autowired
     public SeminarCartServiceImpl( HttpSession session) {
         this.session = session;
     }
 
+    // Method to retrieve the session.
     public HttpSession getSession() {
         return session;
     }
 
+    // Method to get the list of seminars in the cart.
     @Override
     public List<Seminar> getCart() {
         List<Seminar> cart = (List<Seminar>) session.getAttribute("cart");
@@ -31,6 +33,7 @@ public class SeminarCartServiceImpl implements ISeminarCartService {
         return cart;
     }
 
+    // Method to calculate the total price of seminars in the cart.
     @Override
     public BigDecimal totalPrice() {
         BigDecimal totalPrice = new BigDecimal(0);
@@ -40,13 +43,14 @@ public class SeminarCartServiceImpl implements ISeminarCartService {
         }
         return  totalPrice;
     }
-
+    // Method to empty the cart.
     @Override
     public void emptyCart() {
         List<Seminar> cart = getCart();
         cart.clear();
     }
 
+    // Method to delete a seminar from the cart by its ID.
     @Override
     public void deleteSeminarWithId(Long seminarId) {
         List<Seminar> cart = getCart();

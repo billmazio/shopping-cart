@@ -31,13 +31,13 @@ public class SeminarCartController {
     }
 
 
-   // showing cart model
+    // Display the cart with seminars.
     @GetMapping(value = {"", "/"})
     public String seminarCart(Model model) {
         model.addAttribute("cart", seminarCartService.getCart());
         return "cart";
     }
-    //adding the cart
+    // Add a seminar to the cart.
     @GetMapping("/add/{id}")
     public String addToCart(@PathVariable("id") Long id, RedirectAttributes redirect) {
         List<Seminar> cart = seminarCartService.getCart();
@@ -50,7 +50,7 @@ public class SeminarCartController {
         return "redirect:/cart";
     }
 
-    //removing the cart
+    // Remove a seminar from the cart.
     @GetMapping("/remove/{id}")
     public String removeFromCart(@PathVariable("id") Long id, RedirectAttributes redirect) {
         Seminar seminar = seminarServiceImpl.findSeminarById(id).get();
@@ -60,7 +60,7 @@ public class SeminarCartController {
         redirect.addFlashAttribute("successMessage", "Removed seminar successfully!");
         return "redirect:/cart";
     }
-    //remove all the carts
+    // Remove all seminars from the cart.
     @GetMapping("/remove/all")
     public String removeAllFromCart() {
         List<Seminar> cart = seminarCartService.getCart();

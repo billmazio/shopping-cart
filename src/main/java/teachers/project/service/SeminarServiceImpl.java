@@ -1,5 +1,6 @@
 package teachers.project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -19,17 +20,17 @@ import java.util.Optional;
 public class SeminarServiceImpl implements ISeminarService{
 
     private final SeminarRepository seminarRepository;
-
+    @Autowired
     public SeminarServiceImpl(SeminarRepository seminarRepository) {
         this.seminarRepository = seminarRepository;
     }
 
-    //create pagination of seminars
+    // Method to find paginated Seminar records.
     public Page<Seminar> findPaginated(Pageable pageable, String term) {
         return page(pageable, term);
     }
 
-    //showing seminars page
+    // Helper method for paginating Seminar records.
     private Page<Seminar> page(Pageable pageable , String term) {
         int pageSize = pageable.getPageSize();
         int currentPage = pageable.getPageNumber();
@@ -39,8 +40,10 @@ public class SeminarServiceImpl implements ISeminarService{
         List<Seminar> list;
 
         if (term == null) {
+            // If 'term' is null, retrieve all seminars.
             seminars = (ArrayList<Seminar>) seminarRepository.findAll();
         }else {
+            // If 'term' is provided, retrieve seminars by name containing the term.
             seminars = (ArrayList<Seminar>) seminarRepository.findByNameContaining(term);
         }
 
@@ -50,23 +53,29 @@ public class SeminarServiceImpl implements ISeminarService{
             int toIndex = Math.min(startItem + pageSize, seminars.size());
             list = seminars.subList(startItem, toIndex);
         }
+        // Create a paginated Page object for seminars.
         Page<Seminar> seminarPage = new PageImpl<>(list, PageRequest.of(currentPage,pageSize),seminars.size());
 
        return seminarPage;
 
     }
+
     @Override
     public void save(Seminar seminar) {
+        // Save a seminar record.
         seminarRepository.save(seminar);
     }
 
+
     @Override
     public Optional<Seminar> findSeminarById(Long id) {
+        // Find a seminar record by its ID.
         Optional<Seminar> seminar = seminarRepository.findById(id);
         return seminar;
     }
     @Override
     public void delete(Long id) {
+        // Delete a seminar record by its ID.
         seminarRepository.deleteById(id);
     }
 

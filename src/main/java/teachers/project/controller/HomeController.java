@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
 @Controller
 public class HomeController {
 
-    //maximum number in every page
+    // Default number of seminars displayed per page
     private static final int pageSizeDefault = 6;
 
     private final SeminarServiceImpl seminarServiceImpl;
@@ -29,13 +29,14 @@ public class HomeController {
     }
 
 
-    //list of seminars and crossing them with optional
+
+    // Display the home page with a list of seminars and optional pagination.
     @GetMapping(value = { "", "/" })
     public String listSeminars(Model model, @RequestParam("page")Optional<Integer> page,
                                @RequestParam("size")Optional<Integer> size) {
         return page(null, model, page, size);
     }
-    //search seminar
+    // Search for seminars based on a search term.
     @GetMapping("/search")
     public String searchSeminars(@RequestParam("term")String term, Model model,
                                  @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
@@ -45,7 +46,8 @@ public class HomeController {
         return page(term, model, page, size);
     }
 
-    //main trunk of pagination and control with if and else
+
+    // Main trunk of pagination and control with if and else statements.
     private String page(@RequestParam("term") String term, Model model,@RequestParam("page") Optional<Integer> page,
                         @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);

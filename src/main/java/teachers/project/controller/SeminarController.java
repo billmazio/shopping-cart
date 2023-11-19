@@ -28,13 +28,13 @@ public class SeminarController {
         this.seminarServiceImpl = seminarServiceImpl;
     }
 
-    //showing all seminars
+    // Display all seminars with optional pagination.
     @GetMapping(value = { "", "/" })
     public String getAllSeminars(Model model, @RequestParam("page") Optional<Integer> page,
                                            @RequestParam("size") Optional<Integer> size) {
         return page(null,model,page,size);
     }
-    //searching
+    // Display all seminars with optional pagination.
     @GetMapping("/search")
     public String searchSeminars(@RequestParam("term") String term, Model model,
                               @RequestParam("page") Optional<Integer> page,
@@ -44,7 +44,7 @@ public class SeminarController {
         }
         return page(term, model, page, size);
     }
-    //pagination
+    // Helper method for pagination.
     private String page(@RequestParam("term") String term, Model model, @RequestParam("page") Optional<Integer> page,
                         @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
@@ -66,14 +66,14 @@ public class SeminarController {
         }
         return "list";
     }
-    //add seminar
+    // Display a form to add a new seminar.
     @GetMapping("/add")
     public String addSeminar(Model model) {
         model.addAttribute("seminar", new Seminar());
         return "form";
     }
 
-    //save seminar
+    //Save a seminar
     @PostMapping("/save")
     public String saveSeminar(@Valid Seminar seminar, BindingResult result, RedirectAttributes redirect) {
         if (result.hasErrors()) {
@@ -84,14 +84,14 @@ public class SeminarController {
         return "redirect:/seminar";
     }
 
-    //edit
+    // Display a form to edit an existing seminar.
     @GetMapping("/edit/{id}")
     public String editSeminar(@PathVariable("id") Long id, Model model) {
         model.addAttribute("seminar", seminarServiceImpl.findSeminarById(id));
         return "form";
     }
 
-    //delete seminar
+    //Delete a seminar
     @GetMapping("/delete/{id}")
     public String deleteSeminar(@PathVariable Long id, RedirectAttributes redirect) {
         seminarServiceImpl.delete(id);

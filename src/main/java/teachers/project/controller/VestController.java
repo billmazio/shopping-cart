@@ -33,13 +33,14 @@ public class VestController {
         this.studentService = studentService;
     }
 
-    //showing all vests
+    // Display all vests with optional pagination.
     @GetMapping(value = { "", "/" })
     public String getAllVests(Model model, @RequestParam("page")Optional<Integer> page,
                               @RequestParam("size") Optional<Integer> size) {
        return page(null , model ,page , size);
     }
-    //searching
+
+    // Search for vests based on a search term.
     @GetMapping("/search")
     public String searchVests(@RequestParam("term") String term, Model model,
                               @RequestParam("page") Optional<Integer> page,
@@ -49,7 +50,7 @@ public class VestController {
        }
        return page (term,model,page,size);
     }
-    //showing details of Vest
+    // Display details of a specific vest.
     @GetMapping("/{id}")
     public String showSpecificVest(@PathVariable("id") Long id, Model model) {
         List<StudentSeminar> studentSeminars = studentService.findVestsByStudentId(id);
@@ -64,7 +65,7 @@ public class VestController {
         model.addAttribute("seminars",seminars);
         return "vest";
     }
-    //pagination
+    // Helper method for pagination.
     private String page(@RequestParam("term") String term, Model model,
                         @RequestParam("page") Optional<Integer> page,
                         @RequestParam("size") Optional<Integer> size) {
