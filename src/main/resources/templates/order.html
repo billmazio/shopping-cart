@@ -8,7 +8,7 @@
 <div class="container" id="main-content">
     <div class="row">
         <div class="col-6 no-padding">
-            <a href="#" th:href="@{/vests}" class="btn btn-info float-right">
+            <a href="#" th:href="@{/orders}" class="btn btn-info float-right">
                 <i class="fa fa-list-ul"></i> Vests
             </a>
         </div>
@@ -61,12 +61,12 @@
                 </table>
                 <h5>&nbsp;</h5>
             </div>
-            <div style="margin-top: 50px;" th:if="${vestPage.totalPages > 0}"
+            <div style="margin-top: 50px;" th:if="${orderPage.totalPages > 0}"
                  class="pagination" th:each="pageNumber : ${pageNumbers}">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
                         <li class="page-item font-weight-bold"><a
-                                th:href="@{/vests(size=${vestPage.size}, page=${pageNumber})}"
+                                th:href="@{/orders(size=${orderPage.size}, page=${pageNumber})}"
                                 th:text="${pageNumber}"  th:class="page-link"></a></li>
                     </ul>
                 </nav>

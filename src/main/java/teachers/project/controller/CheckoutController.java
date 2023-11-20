@@ -44,18 +44,18 @@ public class CheckoutController {
         return "checkout";
     }
     // Process the vest placement and send confirmation email.
-    @PostMapping("/placeVest")
+    @PostMapping("/placeOrder")
     public String placeVest(@Valid Student student, BindingResult result, RedirectAttributes redirect) {
         if (result.hasErrors()) {
             return "/checkout";
         }
         // Create a vest for the student and send a confirmation email.
-        studentService.createVest(student,seminarCartService.getCart());
-        emailService.sendEmail(student.getEmail(),"roomSeminar -Vest Confirmation","Your vest has been confirmed");
+        studentService.createOrder(student,seminarCartService.getCart());
+        emailService.sendEmail(student.getEmail(),"roomSeminar -Order Confirmation","Your order has been confirmed");
         // Empty the cart after placing the vest.
         seminarCartService.emptyCart();
         // Add a success message and redirect to the cart page.
-        redirect.addFlashAttribute("successMessage", "The vest is confirmed, check your email.");
+        redirect.addFlashAttribute("successMessage", "The order is confirmed, check your email.");
         return "redirect:/cart";
     }
 

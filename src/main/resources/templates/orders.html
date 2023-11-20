@@ -8,7 +8,7 @@
 <div class="container" id="main-content">
     <div class="row">
         <div class="col-4 no-padding">
-            <form class="form-inline" action="#" th:action="@{/vests/search}"
+            <form class="form-inline" action="#" th:action="@{/orders/search}"
                   method="get">
                 <input class="form-control mr-sm-2" type="search" name="term"
                        placeholder="Search by date ..." />
@@ -28,11 +28,11 @@
             </a>
         </div>
     </div>
-        <th:block th:if="${#lists.isEmpty(vestPage.content)}">
+        <th:block th:if="${#lists.isEmpty(orderPage.content)}">
             <h5>There are no current seminars.</h5>
         </th:block>
 
-        <th:block th:unless="${#lists.isEmpty(vestPage.content)}">
+        <th:block th:unless="${#lists.isEmpty(orderPage.content)}">
             <div class="table-responsive">
                 <h5>List of seminars</h5>
                 <table class="table table-striped table-dark text-nowrap">
@@ -48,9 +48,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="studentSeminar, iStat : ${vestPage.content}">
+                    <tr th:each="studentSeminar, iStat : ${orderPage.content}">
                         <td><a href="#"
-                               th:href="@{/vests/{id}(id=${studentSeminar?.Student?.id})}"
+                               th:href="@{/orders/{id}(id=${studentSeminar?.Student?.id})}"
                                th:text="${studentSeminar?.Student?.id}"></a></td>
                         <td th:text="${studentSeminar?.Student?.name}"></td>
                         <td th:text="${studentSeminar?.Student?.surname}"></td>
@@ -63,12 +63,12 @@
                 </table>
                 <h5>&nbsp;</h5>
             </div>
-            <div style="margin-top: 50px;" th:if="${vestPage.totalPages > 0}"
+            <div style="margin-top: 50px;" th:if="${orderPage.totalPages > 0}"
                  class="pagination" th:each="pageNumber : ${pageNumbers}">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
                         <li class="page-item font-weight-bold"><a
-                                th:href="@{/vests(size=${vestPage.size}, page=${pageNumber})}"
+                                th:href="@{/orders(size=${orderPage.size}, page=${pageNumber})}"
                                 th:text="${pageNumber}" th:class="page-link"></a></li>
                     </ul>
                 </nav>

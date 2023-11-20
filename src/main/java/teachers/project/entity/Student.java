@@ -57,7 +57,7 @@ public class Student {
 
 
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
-    private List<Vest> vests;
+    private List<Order> orders;
 
     public Student(Long id, String name, String surname, String city, String postalCode, String phoneNumber, String email) {
         this.id = id;

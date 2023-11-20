@@ -22,7 +22,7 @@
 
   <div class="row">
     <div class="col">
-      <form action="#" th:action="@{/checkout/placeVest}" th:object="${student}" method="post">
+      <form action="#" th:action="@{/checkout/placeOrder}" th:object="${student}" method="post">
         <h4 class="text-center">Billing Details</h4>
 
         <input type="hidden" th:field="*{id}" />
@@ -68,14 +68,14 @@
 
         <div class="form-group">
           <button type="submit" class="btn btn-block btn-primary">
-            <i class="fa fa-regular fa-cart-circle-check"></i> Place vest
+            <i class="fa fa-regular fa-cart-circle-check"></i> Place Order
           </button>
         </div>
       </form>
     </div>
 
     <div class="col">
-      <h4 class="text-center">Your vest</h4>
+      <h4 class="text-center">Your Order</h4>
       <div class="row">
         <div class="col">
           <h5>Products</h5>

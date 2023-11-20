@@ -7,12 +7,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import teachers.project.entity.Order;
 import teachers.project.entity.Seminar;
 import teachers.project.entity.Student;
 import teachers.project.entity.StudentSeminar;
-import teachers.project.entity.Vest;
 import teachers.project.repository.BillingRepository;
-import teachers.project.repository.VestRepository;
+import teachers.project.repository.OrderRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,17 +20,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 public class StudentServiceImpl implements IStudentService {
 
-    private final VestRepository vestRepository;
+    private final OrderRepository orderRepository;
     private final BillingRepository billingRepository;
 
     @Autowired
-    public StudentServiceImpl(VestRepository vestRepository, BillingRepository billingRepository) {
-        this.vestRepository = vestRepository;
+    public StudentServiceImpl(OrderRepository orderRepository, BillingRepository billingRepository) {
+        this.orderRepository = orderRepository;
         this.billingRepository = billingRepository;
     }
 
@@ -40,29 +39,29 @@ public class StudentServiceImpl implements IStudentService {
         return page(pageable, term);
     }
 
-    // Method to create Vest records for a student and seminars.
+    // Method to create Order records for a student and seminars.
     @Override
     @Transactional
-    public void createVest(Student student, List<Seminar> seminars) {
+    public void createOrder(Student student, List<Seminar> seminars) {
         billingRepository.save(student);
 
         for (Seminar seminar : seminars) {
-            Vest vest = new Vest();
-            vest.setStudent(student);
-            vest.setVestDate(LocalDate.now());
-            vest.setSeminar(seminar);
-            vestRepository.save(vest);
+            Order order = new Order();
+            order.setStudent(student);
+            order.setOrderDate(LocalDate.now());
+            order.setSeminar(seminar);
+            orderRepository.save(order);
         }
     }
 
-    // Method to find Vest records for a specific student.
+    // Method to find Order records for a specific student.
     @Override
     public List<StudentSeminar> findVestsByStudentId(Long id) {
-       List<Vest> vests = (List<Vest>) vestRepository.findAll();
+       List<Order> orders = (List<Order>) orderRepository.findAll();
 
-        // Grouping Vest records by Student and mapping them to Seminars.
-        Map<Student, List<Seminar>> studentSeminarMap = vests.stream()
-                .collect(Collectors.groupingBy(Vest::getStudent, Collectors.mapping(Vest::getSeminar, Collectors.toList())));
+        // Grouping Order records by Student and mapping them to Seminars.
+        Map<Student, List<Seminar>> studentSeminarMap = orders.stream()
+                .collect(Collectors.groupingBy(Order::getStudent, Collectors.mapping(Order::getSeminar, Collectors.toList())));
 
         // Creating StudentSeminar objects from grouped data.
         List<StudentSeminar> studentSeminars = studentSeminarMap.entrySet().stream()
@@ -81,17 +80,17 @@ public class StudentServiceImpl implements IStudentService {
         int currentPage = pageable.getPageNumber();
         int startItem = currentPage * pageSize;
 
-        List<Vest> vests;
+        List<Order> orders;
         if (term == null) {
-            vests = (List<Vest>) vestRepository.findAll();
+            orders = (List<Order>) orderRepository.findAll();
         } else {
             LocalDate date = LocalDate.parse(term);
-            vests = new ArrayList<>(vestRepository.findByVestDate(date));
+            orders = new ArrayList<>(orderRepository.findByOrderDate(date));
         }
 
-        // Grouping Vest records by Student and mapping them to Seminars.
-        Map<Student, List<Seminar>> studentSeminarMap = vests.stream()
-                .collect(Collectors.groupingBy(Vest::getStudent, Collectors.mapping(Vest::getSeminar, Collectors.toList())));
+        // Grouping Order records by Student and mapping them to Seminars.
+        Map<Student, List<Seminar>> studentSeminarMap = orders.stream()
+                .collect(Collectors.groupingBy(Order::getStudent, Collectors.mapping(Order::getSeminar, Collectors.toList())));
 
         // Creating StudentSeminar objects from grouped data.
         List<StudentSeminar> studentSeminarList = studentSeminarMap.entrySet().stream()

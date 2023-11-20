@@ -17,7 +17,7 @@ import teachers.project.entity.Student;
 import teachers.project.entity.StudentSeminar;
 import teachers.project.entity.Vest;
 import teachers.project.repository.BillingRepository;
-import teachers.project.repository.VestRepository;
+import teachers.project.repository.OrderRepository;
 import teachers.project.service.StudentServiceImpl;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -28,7 +28,7 @@ import java.util.List;
 public class StudentServiceImplTest {
 
     @Mock
-    private VestRepository vestRepository;
+    private OrderRepository orderRepository;
 
     @Mock
     private BillingRepository billingRepository;
@@ -48,7 +48,7 @@ public class StudentServiceImplTest {
 
         // Assert
         verify(billingRepository, times(1)).save(student);
-        verify(vestRepository, times(1)).save(any(Vest.class));
+        verify(orderRepository, times(1)).save(any(Vest.class));
     }
 
     @Test
@@ -73,7 +73,7 @@ public class StudentServiceImplTest {
         when(pageable.getPageNumber()).thenReturn(0); // You might also need to stub other methods
         String term = null;
 
-        when(vestRepository.findAll()).thenReturn(Collections.emptyList());
+        when(orderRepository.findAll()).thenReturn(Collections.emptyList());
 
         // Act
         Page<StudentSeminar> result = studentService.findPaginated(pageable, term);

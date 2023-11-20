@@ -53,7 +53,7 @@ public class Seminar {
     private LocalDate publishedOn;
 
     @OneToMany(mappedBy = "seminar", cascade = CascadeType.ALL)
-    private List<Vest> vests;
+    private List<Order> orders;
 
 
     public Seminar(Long id, String name, BigDecimal price, String teachers, String code, String scientificManager, LocalDate publishedOn) {

@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface IStudentService {
     Page<StudentSeminar> findPaginated(Pageable pageable, String term);
-    void createVest(Student student, List<Seminar> seminars);
+    void createOrder(Student student, List<Seminar> seminars);
     List<StudentSeminar> findVestsByStudentId(Long id);
 }

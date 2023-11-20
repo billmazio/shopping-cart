@@ -24,16 +24,16 @@ import java.util.stream.IntStream;
 
 
 @Controller
-@RequestMapping("/vests")
-public class VestController {
+@RequestMapping("/orders")
+public class OrderController {
 
     private final IStudentService studentService;
     @Autowired
-    public VestController(IStudentService studentService) {
+    public OrderController(IStudentService studentService) {
         this.studentService = studentService;
     }
 
-    // Display all vests with optional pagination.
+    // Display all orders with optional pagination.
     @GetMapping(value = { "", "/" })
     public String getAllVests(Model model, @RequestParam("page")Optional<Integer> page,
                               @RequestParam("size") Optional<Integer> size) {
@@ -46,7 +46,7 @@ public class VestController {
                               @RequestParam("page") Optional<Integer> page,
                               @RequestParam("size") Optional<Integer> size) {
        if (term.isBlank()) {
-           return "redirect:/vests";
+           return "redirect:/orders";
        }
        return page (term,model,page,size);
     }
@@ -63,7 +63,7 @@ public class VestController {
         }
         model.addAttribute("student",student);
         model.addAttribute("seminars",seminars);
-        return "vest";
+        return "order";
     }
     // Helper method for pagination.
     private String page(@RequestParam("term") String term, Model model,
@@ -72,22 +72,22 @@ public class VestController {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(10);
 
-       Page<StudentSeminar> vestPage;
+       Page<StudentSeminar> orderPage;
 
        if (term == null) {
-           vestPage = studentService.findPaginated(PageRequest.of(currentPage -1,pageSize),null);
+           orderPage = studentService.findPaginated(PageRequest.of(currentPage -1,pageSize),null);
 
        }else {
-           vestPage = studentService.findPaginated(PageRequest.of(currentPage -1,pageSize),term);
+           orderPage = studentService.findPaginated(PageRequest.of(currentPage -1,pageSize),term);
        }
-       model.addAttribute("vestPage",vestPage);
+       model.addAttribute("orderPage",orderPage);
 
-       int totalPages = vestPage.getTotalPages();
+       int totalPages = orderPage.getTotalPages();
        if (totalPages > 0) {
            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
            model.addAttribute("pageNumbers", pageNumbers);
        }
-       return "vests";
+       return "orders";
     }
 }
 
