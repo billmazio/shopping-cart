@@ -43,7 +43,7 @@ public class CheckoutController {
         model.addAttribute("totalPrice",seminarCartService.totalPrice().toString());
         return "checkout";
     }
-    // Process the vest placement and send confirmation email.
+    // Process the order placement and send confirmation email.
     @PostMapping("/placeOrder")
     public String placeVest(@Valid Student student, BindingResult result, RedirectAttributes redirect) {
         if (result.hasErrors()) {

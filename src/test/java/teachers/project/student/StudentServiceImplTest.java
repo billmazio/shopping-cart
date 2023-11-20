@@ -57,7 +57,7 @@ public class StudentServiceImplTest {
         long studentId = 1L;
 
         // Act
-        List<StudentSeminar> result = studentService.findVestsByStudentId(studentId);
+        List<StudentSeminar> result = studentService.findOrdersByStudentId(studentId);
 
         // Assert
         assertTrue(result.isEmpty(), "Expected an empty list when no vests are associated with the student");

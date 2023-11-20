@@ -56,7 +56,7 @@ public class StudentServiceImpl implements IStudentService {
 
     // Method to find Order records for a specific student.
     @Override
-    public List<StudentSeminar> findVestsByStudentId(Long id) {
+    public List<StudentSeminar> findOrdersByStudentId(Long id) {
        List<Order> orders = (List<Order>) orderRepository.findAll();
 
         // Grouping Order records by Student and mapping them to Seminars.

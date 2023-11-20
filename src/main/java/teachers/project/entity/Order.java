@@ -21,7 +21,6 @@ public class Order {
     @Column(name = "order_date", nullable = false)
     private LocalDate orderDate;
 
-    // Add any other attributes specific to the Order entity.
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "student_id")

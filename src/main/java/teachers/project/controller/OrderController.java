@@ -40,7 +40,7 @@ public class OrderController {
        return page(null , model ,page , size);
     }
 
-    // Search for vests based on a search term.
+    // Search for orders based on a search term.
     @GetMapping("/search")
     public String searchVests(@RequestParam("term") String term, Model model,
                               @RequestParam("page") Optional<Integer> page,
@@ -50,10 +50,10 @@ public class OrderController {
        }
        return page (term,model,page,size);
     }
-    // Display details of a specific vest.
+    // Display details of a specific order.
     @GetMapping("/{id}")
     public String showSpecificVest(@PathVariable("id") Long id, Model model) {
-        List<StudentSeminar> studentSeminars = studentService.findVestsByStudentId(id);
+        List<StudentSeminar> studentSeminars = studentService.findOrdersByStudentId(id);
 
         Student student = null;
         List<Seminar> seminars = null;
