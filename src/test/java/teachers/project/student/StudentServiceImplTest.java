@@ -12,10 +12,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import teachers.project.entity.Order;
 import teachers.project.entity.Seminar;
 import teachers.project.entity.Student;
 import teachers.project.entity.StudentSeminar;
-import teachers.project.entity.Vest;
 import teachers.project.repository.BillingRepository;
 import teachers.project.repository.OrderRepository;
 import teachers.project.service.StudentServiceImpl;
@@ -44,11 +44,11 @@ public class StudentServiceImplTest {
         List<Seminar> seminars = Collections.singletonList(seminar);
 
         // Act
-        studentService.createVest(student, seminars);
+        studentService.createOrder(student, seminars);
 
         // Assert
         verify(billingRepository, times(1)).save(student);
-        verify(orderRepository, times(1)).save(any(Vest.class));
+        verify(orderRepository, times(1)).save(any(Order.class));
     }
 
     @Test
