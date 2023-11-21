@@ -11,9 +11,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import teachers.project.entity.Seminar;
-import teachers.project.repository.SeminarRepository;
-import teachers.project.service.SeminarServiceImpl;
+import seminars.project.entity.Seminar;
+import seminars.project.repository.SeminarRepository;
+import seminars.project.service.SeminarServiceImpl;
 
 
 import java.math.BigDecimal;
