@@ -39,6 +39,7 @@ The project leverages the following technologies:
 ![Στιγμιότυπο οθόνης (422)](https://github.com/billmazio/shopping-cart/assets/116730698/f4eb83c3-e568-43b0-baf8-ad423c05f0ed)
 
   - At checkout, buyers must provide their name, surname, email, phone, town, and zip code.
+ ![Στιγμιότυπο οθόνης (423)](https://github.com/billmazio/shopping-cart/assets/116730698/81c20612-6af7-4987-858a-8b69bc67493c)
 
   - Confirmation emails are sent upon successful order placement.
 - **Administrator Workflow:**
