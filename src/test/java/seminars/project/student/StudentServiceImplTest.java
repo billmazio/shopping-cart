@@ -1,4 +1,4 @@
-package teachers.project.student;
+package seminars.project.student;
 
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 import static org.junit.jupiter.api.Assertions.*;
