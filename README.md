@@ -42,6 +42,9 @@ The project leverages the following technologies:
  ![Στιγμιότυπο οθόνης (423)](https://github.com/billmazio/shopping-cart/assets/116730698/81c20612-6af7-4987-858a-8b69bc67493c)
 
   - Confirmation emails are sent upon successful order placement.
+
+    ![Στιγμιότυπο οθόνης (411)](https://github.com/billmazio/shopping-cart/assets/116730698/2e95dc8b-5496-41ce-9075-02950e643181)
+
 - **Administrator Workflow:**
   - Administrators have access to a secure form.
   - They can manage seminar cards and create new ones.
