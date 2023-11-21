@@ -50,6 +50,7 @@ The project leverages the following technologies:
 
   - They can manage seminar cards and create new ones.
  ![Στιγμιότυπο οθόνης (426)](https://github.com/billmazio/shopping-cart/assets/116730698/d8626faf-fb02-4f26-838d-bc1f75d3523c)
+![Στιγμιότυπο οθόνης (428)](https://github.com/billmazio/shopping-cart/assets/116730698/db2581d2-49eb-487b-92db-b89d04b6d045)
 
   - Authentication is required for administrator access.
 
