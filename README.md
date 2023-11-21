@@ -12,12 +12,12 @@ The project leverages the following technologies:
 - ![H2 Database](https://img.icons8.com/color/48/000000/database-restore.png) **H2 Database:** An in-memory database used for data storage.
 - ![Thymeleaf](https://img.icons8.com/color/48/000000/thymeleaf.png) **Thymeleaf:** A Java-based template engine for creating dynamic web pages.
 - ![Spring Security](https://img.icons8.com/color/48/000000/lock.png) **Spring Security:** Provides authentication and authorization features.
-- ![Validation](https://img.icons8.com/color/48/000000/validation.png) **Validation:** Adds validation support.
-- ![Java Validation API](https://img.icons8.com/color/48/000000/java-eclipse.png) **Java Validation API:** Provides validation API.
+-  **Validation:** Adds validation support.
+- **Java Validation API:** Provides validation API.
 - ![JAXB](https://img.icons8.com/color/48/000000/xml-file.png) **Java XML Binding API (JAXB):** Supports XML data binding.
 - ![Spring Boot Starter Mail](https://img.icons8.com/color/48/000000/email.png) **Spring Boot Starter Mail:** Enables email functionality.
 - ![Project Lombok](https://img.icons8.com/color/48/000000/l.png) **Project Lombok:** Simplifies Java code by reducing boilerplate code.
-- ![JUnit](https://img.icons8.com/color/48/000000/junit.png) **JUnit:** A testing framework for Java.
+-  **JUnit:** A testing framework for Java.
 
 ## Database Initialization
 
