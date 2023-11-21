@@ -38,13 +38,13 @@ The project leverages the following technologies:
 ![Στιγμιότυπο οθόνης (421)](https://github.com/billmazio/shopping-cart/assets/116730698/ed134c28-6f08-4092-840c-d8e017a3362c)
 ![Στιγμιότυπο οθόνης (422)](https://github.com/billmazio/shopping-cart/assets/116730698/f4eb83c3-e568-43b0-baf8-ad423c05f0ed)
 
-  - At checkout, buyers must provide their name, surname, email, phone, town, and zip code.![Uploading Στιγμιότυπο οθόνης (422).png…]()
+  - At checkout, buyers must provide their name, surname, email, phone, town, and zip code.
 
   - Confirmation emails are sent upon successful order placement.
 - **Administrator Workflow:**
   - Administrators have access to a secure form.
   - They can manage seminar cards and create new ones.
-  - Authentication is required for administrator access.![Uploading Στιγμιότυπο οθόνης (421).png…]()
+  - Authentication is required for administrator access.
 
 
 ## Testing
