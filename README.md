@@ -28,7 +28,7 @@ The project leverages the following technologies:
 
 ## Security
 
-- **Authentication:** The project implements user authentication for both buyers and administrators.
+- **Authentication:** The project implements user authentication for administrators.
 - **Authorization:** Different roles (buyer, administrator) have different levels of access.
 
 ## Workflow
