@@ -44,7 +44,7 @@ The project leverages the following technologies:
   - Confirmation emails are sent upon successful order placement.
 
 
-![Στιγμιότυπο οθόνης (430)](https://github.com/billmazio/shopping-cart/assets/116730698/d1c1b98b-b6c8-4b73-908b-514c2cd49e9d)
+![Στιγμιότυπο οθόνης (430)](https://github.com/billmazio/shopping-cart/assets/116730698/7b92f645-1a17-4c8d-960d-81f38944ab02)
 
 - **Administrator Workflow:**
   - Administrators have access to a secure form.
