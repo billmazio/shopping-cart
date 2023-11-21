@@ -48,8 +48,7 @@ The project leverages the following technologies:
 
 - **Administrator Workflow:**
   - Administrators have access to a secure form.
-
-![Στιγμιότυπο οθόνης (425)](https://github.com/billmazio/shopping-cart/assets/116730698/73c5b02d-00de-4863-bdc6-fa1d9384af84)
+![Στιγμιότυπο οθόνης (413)](https://github.com/billmazio/shopping-cart/assets/116730698/5c7d17d9-4739-4af2-b6e8-51f38b681b86)
 
   - They can manage seminar cards and create new ones.
   - Authentication is required for administrator access.
