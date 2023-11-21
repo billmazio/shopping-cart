@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-//προστασία κακόβουλων λογισμικών
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -18,6 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.securityDataSource = securityDataSource;
     }
 
+    // Configure authentication using JDBC authentication with the provided DataSource.
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -29,12 +30,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/h2-console").permitAll()
-                .antMatchers("/search").permitAll()
-                .antMatchers("/cart/**").permitAll()
-                .antMatchers("/seminar/**").hasAuthority("ADMIN")
-                .antMatchers("/vests/**").hasAuthority("ADMIN")
+                .antMatchers("/").permitAll() // Allow public access to the home page
+                .antMatchers("/h2-console").permitAll() // Allow access to H2 Console
+                .antMatchers("/search").permitAll() // Allow public access to the search page
+                .antMatchers("/cart/**").permitAll() // Allow public access to cart-related endpoints
+                .antMatchers("/seminar/**").hasAuthority("ADMIN") // Require ADMIN authority for /seminar/**
+                .antMatchers("/orders/**").hasAuthority("ADMIN") // Require ADMIN authority for /orders/**
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -44,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/");
 
-        // H2-Console enable
+        // Disable frame options for H2 Console to make it accessible
         http.headers().frameOptions().disable();
     }
 

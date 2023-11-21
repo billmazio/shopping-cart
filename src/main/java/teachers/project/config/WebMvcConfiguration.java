@@ -41,6 +41,7 @@ public class WebMvcConfiguration {
     @Value("${connection.pool.maxIdleTime}")
     private int connPoolMaxIdleTime;
 
+    // Configure a MessageSource for handling internationalization and localization.
     @Bean
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
@@ -49,6 +50,7 @@ public class WebMvcConfiguration {
         return messageSource;
     }
 
+    // Configure a data source using C3P0 for connection pooling.
     @Bean
     public DataSource securityDataSource() {
 
