@@ -55,3 +55,11 @@ The project uses the Spring Boot Maven Plugin for building.
 This documentation provides an overview of the Shopping Cart project and the technologies used to build it. For more detailed information, refer to the actual project source code, the `data.sql` and `schema.sql` files for database details, and security configurations.
 
 For further documentation and project details, please refer to additional documentation or comments within the project source code.
+## Additional Resources
+
+In addition to the technologies mentioned above, the project also includes:
+
+- **CSS:** Cascading Style Sheets (CSS) for styling the web pages.
+- **JavaScript:** JavaScript for adding dynamic behavior to the website.
+
+These resources are used to enhance the user experience and provide a visually appealing and interactive interface. For more details, please refer to the project's source code in the [Git repository](https://github.com/billmazio/shopping-cart.git).
