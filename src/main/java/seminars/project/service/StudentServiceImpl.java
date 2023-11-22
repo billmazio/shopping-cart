@@ -84,7 +84,7 @@ public class StudentServiceImpl implements IStudentService {
         if (term == null) {
             orders = (List<Order>) orderRepository.findAll();
         } else {
-            LocalDate date = LocalDate.parse(term);
+            LocalDate date = LocalDate.parse(term.trim());
             orders = new ArrayList<>(orderRepository.findByOrderDate(date));
         }
 

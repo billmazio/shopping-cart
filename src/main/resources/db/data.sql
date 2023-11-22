@@ -28,7 +28,8 @@ INSERT INTO SEMINARS(id, name, price, teachers, code, scientific_manager,publish
 
 -- USERS
 INSERT INTO USERS (username, password, enabled)
-	VALUES ('basil', '{noop}basil',1);
+VALUES ('basil', '$2a$10$3O/nQ2tEpxo7j0zSOb8zKeMZs3sTPn9MPde7uO1Y1gRPdv5TVw2Cq', 1);
+
 
 
 -- AUTHORITIES

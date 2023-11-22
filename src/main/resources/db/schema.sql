@@ -31,9 +31,9 @@ create table orders (
 CREATE TABLE USERS (
                        username VARCHAR(255) PRIMARY KEY NOT NULL,
                        password VARCHAR(255) NOT NULL,
-                       enabled TINYINT(1) NOT NULL,
-                       PRIMARY KEY (username)
+                       enabled TINYINT(1) NOT NULL
 );
+
 
 CREATE TABLE AUTHORITIES (
                              username VARCHAR(255) NOT NULL,
