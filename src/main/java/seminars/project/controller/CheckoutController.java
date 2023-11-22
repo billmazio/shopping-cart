@@ -33,7 +33,7 @@ public class CheckoutController {
     }
     // Display checkout page with student details and cart items.
     @GetMapping(value = {"","/"})
-    public String checkout(Model model) {
+    public String checkoutOrder(Model model) {
         List<Seminar> cart = seminarCartService.getCart();
         if (cart.isEmpty()) {
             return "redirect:/cart";
@@ -45,7 +45,7 @@ public class CheckoutController {
     }
     // Process the order placement and send confirmation email.
     @PostMapping("/placeOrder")
-    public String placeVest(@Valid Student student, BindingResult result, RedirectAttributes redirect) {
+    public String placeOrder(@Valid Student student, BindingResult result, RedirectAttributes redirect) {
         if (result.hasErrors()) {
             return "/checkout";
         }

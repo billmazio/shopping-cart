@@ -35,14 +35,14 @@ public class OrderController {
 
     // Display all orders with optional pagination.
     @GetMapping(value = { "", "/" })
-    public String getAllVests(Model model, @RequestParam("page")Optional<Integer> page,
+    public String getAllOrders(Model model, @RequestParam("page")Optional<Integer> page,
                               @RequestParam("size") Optional<Integer> size) {
        return page(null , model ,page , size);
     }
 
     // Search for orders based on a search term.
     @GetMapping("/search")
-    public String searchVests(@RequestParam("term") String term, Model model,
+    public String searchOrders(@RequestParam("term") String term, Model model,
                               @RequestParam("page") Optional<Integer> page,
                               @RequestParam("size") Optional<Integer> size) {
        if (term.isBlank()) {
@@ -52,7 +52,7 @@ public class OrderController {
     }
     // Display details of a specific order.
     @GetMapping("/{id}")
-    public String showSpecificVest(@PathVariable("id") Long id, Model model) {
+    public String specificOrder(@PathVariable("id") Long id, Model model) {
         List<StudentSeminar> studentSeminars = studentService.findOrdersByStudentId(id);
 
         Student student = null;
