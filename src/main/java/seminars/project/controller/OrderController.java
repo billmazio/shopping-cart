@@ -52,7 +52,7 @@ public class OrderController {
     }
     // Display details of a specific order.
     @GetMapping("/{id}")
-    public String specificOrder(@PathVariable("id") Long id, Model model) {
+    public String showSpecificOrder(@PathVariable("id") Long id, Model model) {
         List<StudentSeminar> studentSeminars = studentService.findOrdersByStudentId(id);
 
         Student student = null;

@@ -33,7 +33,7 @@ public class CheckoutController {
     }
     // Display checkout page with student details and cart items.
     @GetMapping(value = {"","/"})
-    public String checkoutOrder(Model model) {
+    public String checkout(Model model) {
         List<Seminar> cart = seminarCartService.getCart();
         if (cart.isEmpty()) {
             return "redirect:/cart";
