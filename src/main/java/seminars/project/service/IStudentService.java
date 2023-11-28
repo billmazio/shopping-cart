@@ -8,7 +8,9 @@ import seminars.project.entity.StudentSeminar;
 import java.util.List;
 
 public interface IStudentService {
-    Page<StudentSeminar> findPaginated(Pageable pageable, String term);
+    Page<Student> findPaginated(Pageable pageable, String term);
     void createOrder(Student student, List<Seminar> seminars);
     List<StudentSeminar> findOrdersByStudentId(Long id);
+
+   // List<Order> findAllOrders();
 }

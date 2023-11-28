@@ -43,7 +43,11 @@
           <div class="card text-white bg-dark"
                style="width: 32rem; margin-bottom: 50px">
             <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-            <div class="card-body">
+            <img class="card-img-top" th:src="${seminar.url}" alt="Seminar Image" style="width: 100%; max-height: 230px; object-fit: cover;">
+            <div class="card-body" >
+
+
+
               <h5 class="card-title" th:text="${seminar.name}"></h5>
               <p class="card-text" th:text="${seminar.teachers}"></p>
             </div>

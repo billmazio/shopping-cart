@@ -13,12 +13,8 @@ import seminars.project.entity.Seminar;
 import seminars.project.entity.Student;
 import seminars.project.entity.StudentSeminar;
 import seminars.project.repository.BillingRepository;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,11 +29,10 @@ public class StudentServiceImpl implements IStudentService {
         this.billingRepository = billingRepository;
     }
 
-    // Method to find paginated StudentSeminar records.
-    @Override
-    public Page<StudentSeminar> findPaginated(Pageable pageable, String term) {
-        return page(pageable, term);
-    }
+@Override
+public Page<Student> findPaginated(Pageable pageable, String term) {
+    return page(pageable, term);
+}
 
     // Method to create Order records for a student and seminars.
     @Override
@@ -74,37 +69,46 @@ public class StudentServiceImpl implements IStudentService {
                 .collect(Collectors.toList());
     }
 
-    // Helper method for paginating StudentSeminar records.
-    private Page<StudentSeminar> page(Pageable pageable, String term) {
+    // Helper method for paginating Student records.
+    private Page<Student> page(Pageable pageable, String term) {
         int pageSize = pageable.getPageSize();
         int currentPage = pageable.getPageNumber();
         int startItem = currentPage * pageSize;
 
-        List<Order> orders;
+        List<Student> students;
+
         if (term == null) {
-            orders = (List<Order>) orderRepository.findAll();
+            // If 'term' is null, retrieve all students.
+            students = (List<Student>) billingRepository.findAll();
         } else {
+            // Implement your filtering logic based on 'term'.
+            // For example, you can search for students by name or other criteria.
             LocalDate date = LocalDate.parse(term.trim());
-            orders = new ArrayList<>(orderRepository.findByOrderDate(date));
+            students = getStudentsByOrderDate(date);
         }
 
-        // Grouping Order records by Student and mapping them to Seminars.
-        Map<Student, List<Seminar>> studentSeminarMap = orders.stream()
-                .collect(Collectors.groupingBy(Order::getStudent, Collectors.mapping(Order::getSeminar, Collectors.toList())));
-
-        // Creating StudentSeminar objects from grouped data.
-        List<StudentSeminar> studentSeminarList = studentSeminarMap.entrySet().stream()
-                .map(entry -> new StudentSeminar(entry.getKey(), entry.getValue()))
-                .collect(Collectors.toList());
-
-        List<StudentSeminar> list;
-        if (studentSeminarList.size() < startItem) {
+        List<Student> list;
+        if (students.size() < startItem) {
             list = Collections.emptyList();
         } else {
-            int toIndex = Math.min(startItem + pageSize, studentSeminarList.size());
-            list = studentSeminarList.subList(startItem, toIndex);
+            int toIndex = Math.min(startItem + pageSize, students.size());
+            list = students.subList(startItem, toIndex);
         }
 
-        return new PageImpl<>(list, PageRequest.of(currentPage, pageSize), studentSeminarList.size());
+        // Create a paginated Page object for students.
+        return new PageImpl<>(list, PageRequest.of(currentPage, pageSize), students.size());
     }
+    private List<Student> getStudentsByOrderDate(LocalDate date) {
+        List<Order> orders = orderRepository.findByOrderDate(date);
+
+        // Extract students from the orders for the given date.
+        List<Student> students = orders.stream()
+                .map(Order::getStudent)
+                .collect(Collectors.toList());
+
+        return students;
+    }
+
 }
+
+

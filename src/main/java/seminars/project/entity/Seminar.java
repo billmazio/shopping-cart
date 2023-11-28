@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import lombok.*;
+import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 @Getter
 @Setter
@@ -36,6 +37,10 @@ public class Seminar {
     @Column(name = "teachers", nullable = false)
     @NotBlank(message = "{seminar.teachers.notBlank}")
     private String teachers;
+
+    @Column(name = "url", nullable = true) // 'nullable = true' if the URL is not mandatory
+    @URL(message = "{seminar.url.invalid}") // Validation for URL format
+    private String url;
 
     @Column(name = "code", nullable = false)
     @NotBlank(message = "{seminar.code.notBlank}")

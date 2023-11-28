@@ -50,27 +50,18 @@
                     <tbody>
                     <tr th:each="seminar : ${seminars}">
                         <td th:text="${seminar.id}">
-                        <td th:text="${seminar?.name}"></td>
-                        <td th:text="${seminar?.price}"></td>
-                        <td th:text="${seminar?.teachers}"></td>
-                        <td th:text="${seminar?.code}"></td>
-                        <td th:text="${seminar?.scientificManager}"></td>
-                        <td th:text="${seminar?.publishedOn}"></td>
+                        <td th:text="${seminar.name}"></td>
+                        <td th:text="${seminar.price}"></td>
+                        <td th:text="${seminar.teachers}"></td>
+                        <td th:text="${seminar.code}"></td>
+                        <td th:text="${seminar.scientificManager}"></td>
+                        <td th:text="${seminar.publishedOn}"></td>
                     </tr>
                     </tbody>
                 </table>
                 <h5>&nbsp;</h5>
             </div>
-            <div style="margin-top: 50px;" th:if="${orderPage.totalPages > 0}"
-                 class="pagination" th:each="pageNumber : ${pageNumbers}">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item font-weight-bold"><a
-                                th:href="@{/orders(size=${orderPage.size}, page=${pageNumber})}"
-                                th:text="${pageNumber}"  th:class="page-link"></a></li>
-                    </ul>
-                </nav>
-            </div>
+
         </th:block>
         <div class="col-4 no-padding"></div>
     </div>

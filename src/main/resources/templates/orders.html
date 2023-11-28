@@ -1,82 +1,93 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="layout :: head"></head>
+
+<head th:replace="layout :: head">
+<!--    <link-->
+<!--            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"-->
+<!--            rel="stylesheet"-->
+<!--            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"-->
+<!--            crossorigin="anonymous" />-->
+
+    <link href="../static/css/page.css" th:href="@{/css/page.css}"  rel="stylesheet" type="text/css"/>
+</head>
 
 <body>
 <nav th:replace="layout :: header"></nav>
 
 <div class="container" id="main-content">
     <div class="row">
-        <div class="col-4 no-padding">
-            <form class="form-inline" action="#" th:action="@{/orders/search}"
-                  method="get">
-                <input class="form-control mr-sm-2" type="search" name="term"
-                       placeholder="Search by date ..." />
+        <div class="col-3 no-padding">
+            <form class="form-inline" action="#" th:action="@{/orders/search}" method="get">
+                <input class="form-control mr-sm-2" type="search" name="term" placeholder="Search by date ..." />
                 <button class="btn btn-primary" type="submit">
                     <i class="fa fa-search"></i> Search
                 </button>
             </form>
         </div>
-        <div class="col-4 no-padding">
+        <div class="col-3 no-padding">
             <a href="#" th:href="@{/seminar}" class="btn btn-info float-right">
                 <i class="fa fa-list-ul"></i> Admin
             </a>
         </div>
-        <div class="col-4 no-padding">
+        <div class="col-3 no-padding">
             <a href="#" th:href="@{/logout}" class="btn btn-danger float-right">
                 <i class="fa fa-key"></i> Log out
             </a>
         </div>
     </div>
-        <th:block th:if="${#lists.isEmpty(orderPage.content)}">
-            <h5>There are no current seminars.</h5>
-        </th:block>
+    <th:block th:if="${#lists.isEmpty(orderPage.content)}">
+        <h5>There are no current seminars.</h5>
+    </th:block>
 
-        <th:block th:unless="${#lists.isEmpty(orderPage.content)}">
-            <div class="table-responsive">
-                <h5>List of seminars</h5>
-                <table class="table table-striped table-dark text-nowrap">
-                    <thead>
-                    <tr>
-                        <th>Student ID</th>
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>City</th>
-                        <th>Postal code</th>
-                        <th>Phone number</th>
-                        <th>Email</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="studentSeminar, iStat : ${orderPage.content}">
-                        <td><a href="#"
-                               th:href="@{/orders/{id}(id=${studentSeminar?.Student?.id})}"
-                               th:text="${studentSeminar?.Student?.id}"></a></td>
-                        <td th:text="${studentSeminar?.Student?.name}"></td>
-                        <td th:text="${studentSeminar?.Student?.surname}"></td>
-                        <td th:text="${studentSeminar?.Student?.city}"></td>
-                        <td th:text="${studentSeminar?.Student?.postalCode}"></td>
-                        <td th:text="${studentSeminar?.Student?.phoneNumber}"></td>
-                        <td th:text="${studentSeminar?.Student?.email}"></td>
-                    </tr>
-                    </tbody>
-                </table>
-                <h5>&nbsp;</h5>
-            </div>
-            <div style="margin-top: 50px;" th:if="${orderPage.totalPages > 0}"
-                 class="pagination" th:each="pageNumber : ${pageNumbers}">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item font-weight-bold"><a
-                                th:href="@{/orders(size=${orderPage.size}, page=${pageNumber})}"
-                                th:text="${pageNumber}" th:class="page-link"></a></li>
-                    </ul>
-                </nav>
-            </div>
-        </th:block>
-        <div class="col-4 no-padding"></div>
-    </div>
+    <th:block th:unless="${#lists.isEmpty(orderPage.content)}">
+        <div class="table-responsive">
+            <h5>List of seminars</h5>
+            <table class="table table-striped table-dark text-nowrap">
+                <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>City</th>
+                    <th>Postal code</th>
+                    <th>Phone number</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="student, iStat : ${orderPage.content}">
+                    <td>
+                        <a href="#"
+                           th:href="@{/orders/{id}(id=${student.id})}"
+                           th:text="${student.id}"></a>
+                    </td>
+                    <td th:text="${student.name}"></td>
+                    <td th:text="${student.surname}"></td>
+                    <td th:text="${student.city}"></td>
+                    <td th:text="${student.postalCode}"></td>
+                    <td th:text="${student.phoneNumber}"></td>
+                    <td th:text="${student.email}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <h5>&nbsp;</h5>
+        </div>
+
+        <div style="margin-top: 50px;" th:if="${orderPage.totalPages > 0}" class="pagination">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li th:each="pageNumber : ${pageNumbers}" class="page-item font-weight-bold">
+                        <a th:href="@{/orders(size=${orderPage.size}, page=${pageNumber})}"
+                           th:text="${pageNumber}" class="page-link"></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+    </th:block>
+    <div class="col-4 no-padding"></div>
 </div>
-
 </body>
+
 </html>

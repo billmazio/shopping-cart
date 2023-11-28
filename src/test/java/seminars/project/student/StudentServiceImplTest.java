@@ -60,7 +60,7 @@ public class StudentServiceImplTest {
         List<StudentSeminar> result = studentService.findOrdersByStudentId(studentId);
 
         // Assert
-        assertTrue(result.isEmpty(), "Expected an empty list when no vests are associated with the student");
+        assertTrue(result.isEmpty(), "Expected an empty list when no orders are associated with the student");
     }
 
 
@@ -71,12 +71,12 @@ public class StudentServiceImplTest {
         Pageable pageable = mock(Pageable.class);
         when(pageable.getPageSize()).thenReturn(10); // Stubbing getPageSize to return a positive integer
         when(pageable.getPageNumber()).thenReturn(0); // You might also need to stub other methods
-        String term = null;
 
-        when(orderRepository.findAll()).thenReturn(Collections.emptyList());
+
+       // when(orderRepository.findAll()).thenReturn(Collections.emptyList());
 
         // Act
-        Page<StudentSeminar> result = studentService.findPaginated(pageable, term);
+        Page<Student> result = studentService.findPaginated(pageable, null);
 
         // Assert
         assertNotNull(result);
