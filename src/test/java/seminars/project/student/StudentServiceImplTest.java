@@ -37,7 +37,7 @@ public class StudentServiceImplTest {
     private StudentServiceImpl studentService;
 
     @Test
-    public void testCreateVest() {
+    public void testCreateOrder() {
         // Arrange
         Student student = new Student(1L, "John", "Doe", "New York", "10001", "1234567890", "john.doe@example.com");
         Seminar seminar = new Seminar(1L, "Math", new BigDecimal("100.00"), "John Doe", "1234567890", "Prof. Smith", LocalDate.now());
@@ -52,7 +52,7 @@ public class StudentServiceImplTest {
     }
 
     @Test
-    public void testFindVestsByStudentId_WhenNoVests_ShouldReturnEmptyList() {
+    public void testFindOrdersByStudentId_WhenNoOrders_ShouldReturnEmptyList() {
         // Arrange
         long studentId = 1L;
 

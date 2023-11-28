@@ -54,6 +54,12 @@
       </div>
 
       <div class="form-group">
+        <input class="form-control" type="text" placeholder="Seminar url"
+               th:field="*{url}" th:errorclass="field-error" /> <em
+              th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></em>
+      </div>
+
+      <div class="form-group">
         <button type="submit" class="btn btn-block btn-primary">
           <i class="fa fa-save"></i> Save
         </button>

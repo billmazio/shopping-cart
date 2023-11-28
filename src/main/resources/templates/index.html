@@ -5,7 +5,8 @@
 <body>
 <nav th:replace="layout :: header"></nav>
 
-<div class="container" id="main-content">
+<div class="container" id="main-content" >
+  <!-- Rest of your content -->
   <div class="row">
     <div class="col-6 no-padding">
       <form class="form-inline" action="#" th:action="@{/search}"
@@ -42,10 +43,8 @@
              th:each="seminar, iStat : ${seminarPage.content}">
           <div class="card text-white bg-dark"
                style="width: 32rem; margin-bottom: 50px">
-            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
             <img class="card-img-top" th:src="${seminar.url}" alt="Seminar Image" style="width: 100%; max-height: 230px; object-fit: cover;">
             <div class="card-body" >
-
 
 
               <h5 class="card-title" th:text="${seminar.name}"></h5>

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="layout :: head"></head>
 
 <body>
 <nav th:replace="layout :: header"></nav>
+<div class="container" id="main-content" >
 
-<div class="container" id="main-content" tiles:fragment="content">
+
   <div class="row d-flex justify-content-center">
     <form style="min-width: 300px;" name="f" th:action="@{/login}"
           method="post">
@@ -32,8 +33,16 @@
       <input type="hidden" name="${_csrf.parameterName}"
              value="${_csrf.token}" />
     </form>
+
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-auto">
+
+    </div>
   </div>
 </div>
+</div>
+
 <script src="/js/login.js"></script>
 </body>
 </html>

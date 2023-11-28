@@ -61,6 +61,7 @@
             <th>Scientific Manager</th>
             <th>Published on</th>
             <th>Code</th>
+            <th>Url</th>
             <th>Price ($)</th>
             <th>Action</th>
           </tr>
@@ -72,6 +73,7 @@
             <td th:text="${seminar?.scientificManager}"></td>
             <td th:text="${seminar?.publishedOn}"></td>
             <td th:text="${seminar?.code}"></td>
+            <td th:text="${seminar?.url}"></td>
             <td th:text="${seminar?.price}"></td>
             <td><a href="#" th:href="@{/seminar/edit/{id}(id=${seminar.id})}"
                    class="mr-sm-2 text-primary"> <i

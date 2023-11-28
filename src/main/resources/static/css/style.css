@@ -1,6 +1,11 @@
 body {
     background-color: #455d7a;
     color: #f7c873;
+    background-image: url('/images/Gear_icon-72a7cf.svg.png'); /* Adjust the path */
+    background-size: cover; /* Cover the entire page */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Fix the background image */
 }
 
 #main-content {
