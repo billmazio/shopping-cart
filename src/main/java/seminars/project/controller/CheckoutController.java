@@ -26,9 +26,9 @@ public class CheckoutController {
     private final EmailService emailService;
     private final ISeminarCartService seminarCartService;
     @Autowired
-    public CheckoutController(IStudentService studentService, EmailService emailService, ISeminarCartService seminarCartService) {
+    public CheckoutController(IStudentService studentService,   EmailService emailService,   ISeminarCartService seminarCartService) {
         this.studentService = studentService;
-        this.emailService = emailService;
+    this.emailService = emailService;
         this.seminarCartService = seminarCartService;
     }
     // Display checkout page with student details and cart items.
@@ -52,7 +52,7 @@ public class CheckoutController {
         // Create a vest for the student and send a confirmation email.
         studentService.createOrder(student,seminarCartService.getCart());
         emailService.sendEmail(student.getEmail(),"roomSeminar -Order Confirmation","Your order has been confirmed");
-        // Empty the cart after placing the vest.
+        // Empty the cart after placing the order.
         seminarCartService.emptyCart();
         // Add a success message and redirect to the cart page.
         redirect.addFlashAttribute("successMessage", "The order is confirmed, check your email.");

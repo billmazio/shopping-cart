@@ -50,6 +50,8 @@ public class SeminarCartController {
         return "redirect:/cart";
     }
 
+
+
     // Remove a seminar from the cart.
     @GetMapping("/remove/{id}")
     public String removeFromCart(@PathVariable("id") Long id, RedirectAttributes redirect) {

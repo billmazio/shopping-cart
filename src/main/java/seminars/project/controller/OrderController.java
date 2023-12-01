@@ -9,15 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import seminars.project.entity.Order;
 import seminars.project.service.IStudentService;
 import seminars.project.entity.Seminar;
 import seminars.project.entity.Student;
 import seminars.project.entity.StudentSeminar;
-
-
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

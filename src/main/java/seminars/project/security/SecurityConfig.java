@@ -39,7 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll() // Allow public access to the home page
-                .antMatchers("/h2-console").permitAll() // Allow access to H2 Console
                 .antMatchers("/search").permitAll() // Allow public access to the search page
                 .antMatchers("/cart/**").permitAll() // Allow public access to cart-related endpoints
                 .antMatchers("/seminar/**").hasAuthority("ADMIN") // Require ADMIN authority for /seminar/**
@@ -53,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/");
 
-        // Disable frame options for H2 Console to make it accessible
+
         http.headers().frameOptions().disable();
     }
 
