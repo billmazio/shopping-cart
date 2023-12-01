@@ -49,7 +49,6 @@
              th:each="seminar, iStat : ${cart}">
           <div class="card text-white bg-dark"
                style="width: 32rem; margin-bottom: 50px">
-            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
             <div class="card-body">
               <h5 class="card-title" th:text="${seminar.name}"></h5>
               <p class="card-text" th:text="${seminar.teachers}"></p>
@@ -67,17 +66,7 @@
           </div>
         </div>
       </div>
-      <div th:if="${seminarPage.totalPages > 0}" class="pagination"
-           th:each="pageNumber : ${pageNumbers}">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item font-weight-bold"><a
-                    th:href="@{/(size=${seminarPage.size}, page=${pageNumber})}"
-                    th:text="${pageNumber}" th:class="page-link"></a></li>
 
-          </ul>
-        </nav>
-      </div>
     </th:block>
 
   </div>
