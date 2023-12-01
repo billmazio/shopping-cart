@@ -49,7 +49,7 @@ public class CheckoutController {
         if (result.hasErrors()) {
             return "/checkout";
         }
-        // Create a vest for the student and send a confirmation email.
+        // Create an order for the student and send a confirmation email.
         studentService.createOrder(student,seminarCartService.getCart());
         emailService.sendEmail(student.getEmail(),"roomSeminar -Order Confirmation","Your order has been confirmed");
         // Empty the cart after placing the order.
