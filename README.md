@@ -9,7 +9,7 @@ This document provides an overview of the Maven Spring Boot project for a Shoppi
 The project leverages the following technologies:
 
 - ![Spring Boot](https://img.icons8.com/color/48/000000/spring-logo.png) **Spring Boot:** A Java-based framework for building web applications.
-- ![H2 Database](https://img.icons8.com/color/48/000000/database-restore.png) **H2 Database:** An in-memory database used for data storage.
+- ![MySQL Database](https://img.icons8.com/color/48/000000/mysql-logo.png) **MySQL Database:** A popular open-source relational database management system used for data storage.
 - ![Thymeleaf](https://img.icons8.com/color/48/000000/thymeleaf.png) **Thymeleaf:** A Java-based template engine for creating dynamic web pages.
 - ![Spring Security](https://img.icons8.com/color/48/000000/lock.png) **Spring Security:** Provides authentication and authorization features.
 -  **Validation:** Adds validation support.
@@ -19,12 +19,6 @@ The project leverages the following technologies:
 - ![Project Lombok](https://img.icons8.com/color/48/000000/l.png) **Project Lombok:** Simplifies Java code by reducing boilerplate code.
 -  **JUnit:** A testing framework for Java.
 
-## Database Initialization
-
-- **Database Type:** H2
-- **Initialization Scripts:**
-  - **schema.sql:** Contains the database schema definition.
-  - **data.sql:** Contains initial data to populate the database.
 
 ## Security
 
@@ -35,25 +29,40 @@ The project leverages the following technologies:
 
 - **Students Workflow:**
   - Students can add seminar cards to their cart.
-![Στιγμιότυπο οθόνης (421)](https://github.com/billmazio/shopping-cart/assets/116730698/ed134c28-6f08-4092-840c-d8e017a3362c)
-![Στιγμιότυπο οθόνης (422)](https://github.com/billmazio/shopping-cart/assets/116730698/f4eb83c3-e568-43b0-baf8-ad423c05f0ed)
+   ![Στιγμιότυπο οθόνης (439)](https://github.com/billmazio/shopping-cart/assets/116730698/9ec6bb81-3618-41aa-a347-c8f1f4a9dbcd)
+   ![Στιγμιότυπο οθόνης (440)](https://github.com/billmazio/shopping-cart/assets/116730698/78646935-ce1a-4a4a-a3f1-ed20a20b845b)
+   ![Στιγμιότυπο οθόνης (442)](https://github.com/billmazio/shopping-cart/assets/116730698/fd20f4fc-f43c-4e9b-addb-391d7825ec82)
 
   - At checkout, buyers must provide their name, surname, email, phone, town, and zip code.
- ![Στιγμιότυπο οθόνης (423)](https://github.com/billmazio/shopping-cart/assets/116730698/81c20612-6af7-4987-858a-8b69bc67493c)
+    ![Στιγμιότυπο οθόνης (443)](https://github.com/billmazio/shopping-cart/assets/116730698/41fb2424-f2c7-4ed7-ad2d-1415a5149f3c)
 
   - Confirmation emails are sent upon successful order placement.
-![Στιγμιότυπο οθόνης (430)](https://github.com/billmazio/shopping-cart/assets/116730698/7a2aa10c-8462-4996-805b-11704a27d446)
+  ![Στιγμιότυπο οθόνης (444)](https://github.com/billmazio/shopping-cart/assets/116730698/5410ea05-43bf-4809-b16d-ae2efcacccb1)
 
 - **Administrator Workflow:**
   - Administrators have access to a secure form.
-![Στιγμιότυπο οθόνης (413)](https://github.com/billmazio/shopping-cart/assets/116730698/5c7d17d9-4739-4af2-b6e8-51f38b681b86)
+  ![Στιγμιότυπο οθόνης (445)](https://github.com/billmazio/shopping-cart/assets/116730698/0d8b103b-377e-4a0b-a703-ad2935ae5839)
 
   - They can manage seminar cards and create new ones.
- ![Στιγμιότυπο οθόνης (426)](https://github.com/billmazio/shopping-cart/assets/116730698/d8626faf-fb02-4f26-838d-bc1f75d3523c)
-![Στιγμιότυπο οθόνης (428)](https://github.com/billmazio/shopping-cart/assets/116730698/db2581d2-49eb-487b-92db-b89d04b6d045)
-
+    ![Στιγμιότυπο οθόνης (446)](https://github.com/billmazio/shopping-cart/assets/116730698/f2e5fe5b-d7f0-4c19-bc99-fa246f452592)
+    ![Στιγμιότυπο οθόνης (448)](https://github.com/billmazio/shopping-cart/assets/116730698/79b6e24f-663b-47d5-96f7-284934544765)
+    ![Στιγμιότυπο οθόνης (449)](https://github.com/billmazio/shopping-cart/assets/116730698/5554247a-63ba-4244-83b3-bd4dbf88913a)
   - Authentication is required for administrator access.
 
+# Pagination Feature Documentation
+
+## Overview
+This document outlines the implementation of the pagination feature in the Shopping Cart application. The pagination functionality is essential for handling large datasets efficiently, providing an improved user experience by displaying the data in smaller, more manageable chunks.
+
+## Key Features
+- **Dynamic Pagination**: Automatically adjusts the number of items displayed per page.
+- **Search Integration**: Works in conjunction with the search feature to paginate filtered results.
+- **User-Friendly Navigation**: Provides intuitive controls for navigating between pages.
+
+## Implementation Details
+
+### Service Layer
+The service layer handles the logic for fetching paginated data based on provided criteria.
 
 ## Testing
 
