@@ -41,13 +41,14 @@ The project leverages the following technologies:
 
 - **Administrator Workflow:**
   - Administrators have access to a secure form.
+  - Authentication is required for administrator access.
   ![Στιγμιότυπο οθόνης (445)](https://github.com/billmazio/shopping-cart/assets/116730698/0d8b103b-377e-4a0b-a703-ad2935ae5839)
 
   - They can manage seminar cards and create new ones.
     ![Στιγμιότυπο οθόνης (446)](https://github.com/billmazio/shopping-cart/assets/116730698/f2e5fe5b-d7f0-4c19-bc99-fa246f452592)
     ![Στιγμιότυπο οθόνης (448)](https://github.com/billmazio/shopping-cart/assets/116730698/79b6e24f-663b-47d5-96f7-284934544765)
     ![Στιγμιότυπο οθόνης (449)](https://github.com/billmazio/shopping-cart/assets/116730698/5554247a-63ba-4244-83b3-bd4dbf88913a)
-  - Authentication is required for administrator access.
+
 
 # Pagination Feature Documentation
 
@@ -72,11 +73,7 @@ The project includes unit and integration tests to ensure the functionality of t
 
 The project uses the Spring Boot Maven Plugin for building.
 
-## Conclusion
 
-This documentation provides an overview of the Shopping Cart project and the technologies used to build it. For more detailed information, refer to the actual project source code, the `data.sql` and `schema.sql` files for database details, and security configurations.
-
-For further documentation and project details, please refer to additional documentation or comments within the project source code.
 ## Additional Resources
 
 In addition to the technologies mentioned above, the project also includes:
